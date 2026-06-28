@@ -1,0 +1,116 @@
+/* =============================================================================
+   Wroughtery — global tokens + base
+   The "endorsed model" frame: forge tokens are canonical and shared by every
+   page. Orbital's teal is a *contained* signature, scoped to .orbital only
+   (see pages/orbital/orbital.scss) — never a repaint of the shell.
+   ========================================================================== */
+
+:root {
+  /* --- Forge palette (FINAL — match exactly) ----------------------------- */
+  --iron:  #211E1B; /* type + most dark surfaces; the default ink           */
+  --steel: #45525A; /* secondary text, muted UI; keeps palette off warm     */
+  --ember: #C24E2A; /* the hot iron — used sparingly (billet, 1 CTA, AI)    */
+  --ash:   #8C857B; /* mono labels, meta, hex, captions                     */
+  --bone:  #EFEAE0; /* light ink on dark surfaces                           */
+  --paper: #E9E8E3; /* page background — a cool off-white, never cream      */
+
+  /* Sanctioned ember temperatures — ship Forge unless told otherwise.      */
+  --ember-forge:  #C24E2A;
+  --ember-bright: #D6602F;
+  --ember-deep:   #A23C1E;
+
+  /* Hairline rules — the spec-sheet chrome. A single hairline, not shadow. */
+  --line:    rgba(33, 30, 27, .13);    /* on light */
+  --line-lt: rgba(239, 234, 224, .16); /* on dark  */
+
+  /* Shape */
+  --radius-card: 14px;
+  --radius-tile: 14px;
+
+  /* Type stacks (self-hosted via @fontsource, registered in angular.json)  */
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-sans:    'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Shared rhythm */
+  --shell-max: 1060px;
+  --section-gap: 62px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--iron);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* belt-and-suspenders: never produce a horizontal scrollbar */
+  overflow-x: clip;
+}
+
+/* Screen-reader-only — a real heading without a visual change. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+a { color: inherit; }
+
+/* --- Shared "spec sheet / instrument" grammar primitives ----------------- */
+
+/* Bricolage display (wordmark + H2s): 700, tight tracking, tight leading.   */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.0;
+}
+
+/* Mono label — the core spec-sheet tell. UPPERCASE eyebrows, wide tracking. */
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: .14em;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  /* canonical: the lit NN index is 500, the muted LABEL is 400 */
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+/* A hairline divider that opens each section. */
+.hairline { border-top: 1px solid var(--line); }
+
+/* Focus visibility — keep it on-brand (ember), never remove it. */
+:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Respect reduced-motion for the ember pulse / hovers. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+}

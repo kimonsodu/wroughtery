@@ -1,0 +1,32 @@
+:host { display: block; }
+
+.eyebrow-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.idx {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .16em;
+  /* ember-deep clears AA for this small index on paper; still reads as ember */
+  color: var(--ember-deep);
+}
+
+.heading {
+  font-size: 29px;
+  line-height: 1.04;
+  margin: 0;
+  color: var(--iron);
+}
+
+.intro {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--steel);
+  max-width: 64ch;
+  margin: 14px 0 0;
+}

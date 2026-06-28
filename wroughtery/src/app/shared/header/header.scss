@@ -1,0 +1,74 @@
+.head {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 18px 32px 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: var(--ash);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+
+@media (max-width: 560px) {
+  .meta__rev { display: none; }
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 0 22px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  color: var(--iron);
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+
+  a {
+    /* steel (not ash) so the resting nav clears AA contrast on paper */
+    color: var(--steel);
+    text-decoration: none;
+    padding: 4px 0;
+    position: relative;
+    transition: color .18s ease;
+  }
+  a:hover { color: var(--iron); }
+
+  .nav__link--active {
+    color: var(--iron);
+  }
+  /* a lit ember tick under the active route — the one warm accent in chrome */
+  .nav__link--active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 2px;
+    background: var(--ember);
+    border-radius: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav { gap: 20px; }
+}

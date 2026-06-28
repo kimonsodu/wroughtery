@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.shell {
+  display: block;
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 0 32px;
+}

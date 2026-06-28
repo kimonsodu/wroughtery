@@ -1,0 +1,189 @@
+<div class="orbital">
+  <!-- Orbital-local SVG defs: amber level-point glow, reused by the icon and
+       the instrument screens. Kept inside .orbital so the teal signature is
+       contained to this page. -->
+  <svg width="0" height="0" aria-hidden="true" focusable="false"
+       style="position:absolute;width:0;height:0;overflow:hidden">
+    <defs>
+      <filter id="orbGlow" x="-90%" y="-90%" width="280%" height="280%"
+              color-interpolation-filters="linearRGB">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2.0" result="b2" />
+        <feFlood flood-color="#C24E2A" flood-opacity="0.7" result="c2" />
+        <feComposite in="c2" in2="b2" operator="in" result="g2" />
+        <feGaussianBlur in="SourceAlpha" stdDeviation="0.6" result="b1" />
+        <feFlood flood-color="#FFC06A" flood-opacity="0.95" result="c1" />
+        <feComposite in="c1" in2="b1" operator="in" result="g1" />
+        <feMerge>
+          <feMergeNode in="g2" /><feMergeNode in="g1" /><feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- eyebrow: cold anvil — Orbital is sensor-driven, not AI -->
+  <div class="obx">
+    <app-anvil-mark variant="cold" [height]="22" title="Orbital — a Wroughtery tool" />
+    <span class="obx__label mono">Orbital · Sensor Instrument</span>
+  </div>
+
+  <!-- HERO ----------------------------------------------------------------->
+  <section class="hero">
+    <div class="hero__copy">
+      <h1 class="hero__title display">
+        A <span class="teal">true</span> level,<br />read at a glance.
+      </h1>
+      <p class="hero__sub">
+        Orbital turns your phone’s motion sensors into a calm, precise level —
+        no clutter, no noise, just the line and the point.
+      </p>
+
+      <div class="hero__actions">
+        <a class="play" href="https://play.google.com/store" rel="noopener"
+           aria-label="Get Orbital on Google Play">
+          <svg class="play__glyph" viewBox="0 0 24 26" aria-hidden="true">
+            <path d="M2 1 L22 13 L2 25 Z" fill="currentColor" />
+          </svg>
+          <span class="play__txt">
+            <small class="mono">GET IT ON</small>
+            <span class="display">Google Play</span>
+          </span>
+        </a>
+        <p class="hero__meta mono">Free · Android 8.0+ · No ads, no tracking</p>
+      </div>
+    </div>
+
+    <!-- app icon: the instrument, not a blacksmith tool -->
+    <div class="hero__icon">
+      <svg class="appicon" viewBox="0 0 64 64" role="img"
+           aria-label="Orbital app icon">
+        <rect width="64" height="64" rx="14" fill="#0E1417" />
+        <circle cx="32" cy="32" r="17.5" fill="none" stroke="#34E3C4"
+                stroke-width="2.4" opacity="0.92" />
+        <circle cx="32" cy="32" r="9" fill="none" stroke="#34E3C4"
+                stroke-width="1.1" opacity="0.35" />
+        <g stroke="#34E3C4" stroke-width="1.7" stroke-linecap="round" opacity="0.55">
+          <line x1="32" y1="7.5" x2="32" y2="13" />
+          <line x1="32" y1="51" x2="32" y2="56.5" />
+          <line x1="7.5" y1="32" x2="13" y2="32" />
+          <line x1="51" y1="32" x2="56.5" y2="32" />
+        </g>
+        <circle cx="32" cy="32" r="5.2" fill="#C24E2A" filter="url(#orbGlow)" />
+      </svg>
+      <span class="hero__icon-cap mono">App icon · 1.0</span>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS ---------------------------------------------------------->
+  <section class="shots">
+    <div class="shots__head mono">Screens</div>
+    <div class="shots__row">
+
+      <!-- 1 · level (good) -->
+      <figure class="phone">
+        <div class="phone__notch"></div>
+        <div class="phone__screen">
+          <div class="screen__top mono"><span>ORBITAL</span><span class="teal">LEVEL</span></div>
+          <svg class="gauge" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="78" fill="none" stroke="#34E3C4" stroke-width="3" opacity="0.85" />
+            <circle cx="100" cy="100" r="44" fill="none" stroke="#34E3C4" stroke-width="1.2" opacity="0.3" />
+            <g stroke="#34E3C4" stroke-width="2.4" stroke-linecap="round" opacity="0.6">
+              <line x1="100" y1="10" x2="100" y2="24" />
+              <line x1="100" y1="176" x2="100" y2="190" />
+              <line x1="10" y1="100" x2="24" y2="100" />
+              <line x1="176" y1="100" x2="190" y2="100" />
+            </g>
+            <circle cx="100" cy="100" r="14" fill="#34E3C4" />
+            <circle cx="100" cy="100" r="14" fill="none" stroke="#9af6e4" stroke-width="1" opacity="0.7" />
+          </svg>
+          <div class="screen__read teal">0.0°</div>
+          <div class="screen__cap mono">held true</div>
+        </div>
+      </figure>
+
+      <!-- 2 · off true (amber/ember) -->
+      <figure class="phone">
+        <div class="phone__notch"></div>
+        <div class="phone__screen">
+          <div class="screen__top mono"><span>ORBITAL</span><span class="amber">OFF TRUE</span></div>
+          <svg class="gauge" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="78" fill="none" stroke="#34E3C4" stroke-width="3" opacity="0.4" />
+            <path d="M 100 22 A 78 78 0 0 1 169 78" fill="none" stroke="#C24E2A" stroke-width="3" stroke-linecap="round" />
+            <circle cx="100" cy="100" r="44" fill="none" stroke="#34E3C4" stroke-width="1.2" opacity="0.25" />
+            <g stroke="#34E3C4" stroke-width="2.4" stroke-linecap="round" opacity="0.5">
+              <line x1="100" y1="10" x2="100" y2="24" />
+              <line x1="100" y1="176" x2="100" y2="190" />
+              <line x1="10" y1="100" x2="24" y2="100" />
+              <line x1="176" y1="100" x2="190" y2="100" />
+            </g>
+            <line x1="100" y1="100" x2="134" y2="72" stroke="#C24E2A" stroke-width="1.5" opacity="0.5" />
+            <circle cx="134" cy="72" r="14" fill="#C24E2A" filter="url(#orbGlow)" />
+          </svg>
+          <div class="screen__read amber">2.4°</div>
+          <div class="screen__cap mono">tilt · up-right</div>
+        </div>
+      </figure>
+
+      <!-- 3 · readout -->
+      <figure class="phone">
+        <div class="phone__notch"></div>
+        <div class="phone__screen">
+          <div class="screen__top mono"><span>ORBITAL</span><span class="teal">READOUT</span></div>
+          <div class="readout">
+            <div class="readout__row">
+              <span class="readout__k mono">PITCH</span>
+              <span class="readout__v teal">0.2°</span>
+            </div>
+            <div class="readout__row">
+              <span class="readout__k mono">ROLL</span>
+              <span class="readout__v teal">1.1°</span>
+            </div>
+            <svg class="horizon" viewBox="0 0 200 90" aria-hidden="true">
+              <line x1="12" y1="45" x2="188" y2="45" stroke="#34E3C4" stroke-width="1" opacity="0.3" />
+              <line x1="20" y1="52" x2="180" y2="38" stroke="#34E3C4" stroke-width="2.4" stroke-linecap="round" />
+              <circle cx="100" cy="45" r="3.5" fill="#C24E2A" />
+            </svg>
+          </div>
+          <div class="screen__cap mono">live · 60 hz</div>
+        </div>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ACCENT BLOCK — the one contained teal signature ---------------------->
+  <section class="accent">
+    <div class="accent__mark">
+      <svg viewBox="0 0 64 64" class="accent__dot" aria-hidden="true">
+        <circle cx="32" cy="32" r="9" fill="#C24E2A" filter="url(#orbGlow)" />
+      </svg>
+    </div>
+    <p class="accent__text display">
+      The point glows <span class="amber">amber</span> the moment you drift off
+      true, and settles to <span class="teal">phosphor&nbsp;teal</span> the
+      instant you’re level.
+    </p>
+  </section>
+
+  <!-- SPEC ROW (shared mono grammar) --------------------------------------->
+  <section class="spec">
+    <div class="spec__head mono">Specification</div>
+    <dl class="spec__list">
+      @for (s of specs; track s.key) {
+        <div class="spec__row">
+          <dt class="spec__k mono">{{ s.key }}</dt>
+          <dd class="spec__v mono">{{ s.value }}</dd>
+        </div>
+      }
+    </dl>
+    <p class="spec__note mono">
+      Reconciled to the family — readouts in IBM&nbsp;Plex&nbsp;Mono, the level
+      point nudged onto Ember #C24E2A.
+    </p>
+  </section>
+
+  <!-- WAYFINDING ----------------------------------------------------------->
+  <a class="back" routerLink="/tools">
+    <span class="back__arrow mono" aria-hidden="true">←</span>
+    <span class="back__txt mono">Back to the workshop</span>
+  </a>
+</div>

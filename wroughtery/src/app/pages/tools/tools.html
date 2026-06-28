@@ -1,0 +1,60 @@
+<section class="section section--first">
+  <app-section-head
+    level="h1"
+    index="01"
+    label="Portfolio"
+    heading="One mark, many tools"
+    intro="Each tool takes a name and the anvil as its signature. The iron is lit
+           for AI-driven tools and stays cold for the rest — honest wayfinding,
+           not a ranking. Orbital is sensor-driven, so it wears the cold anvil."
+  />
+
+  <div class="grid">
+    @for (tool of tools; track tool.name) {
+      <!-- a routed tool is a link; the rest are static cards -->
+      @if (tool.route) {
+        <a class="card" [routerLink]="tool.route">
+          <ng-container
+            *ngTemplateOutlet="cardInner; context: { $implicit: tool, linked: true }"
+          />
+        </a>
+      } @else {
+        <div class="card">
+          <ng-container
+            *ngTemplateOutlet="cardInner; context: { $implicit: tool, linked: false }"
+          />
+        </div>
+      }
+    }
+  </div>
+</section>
+
+<!-- The family, on iron --------------------------------------------------- -->
+<section class="section">
+  <div class="family">
+    @for (tool of tools; track tool.name) {
+      <div class="family__item">
+        <app-anvil-mark [variant]="tool.signal" [height]="30" [title]="tool.name" />
+        <span class="family__name display">{{ tool.name }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- shared card body ------------------------------------------------------- -->
+<ng-template #cardInner let-tool let-linked="linked">
+  <app-anvil-mark [variant]="tool.signal" [height]="36" [title]="tool.name" />
+  <div class="card__body">
+    <div class="card__name display">{{ tool.name }}</div>
+    <p class="card__blurb">{{ tool.blurb }}</p>
+    <div class="card__tag mono">
+      @if (tool.ai) {
+        <span class="card__tag--ai">AI</span> ·
+      }
+      A WROUGHTERY TOOL
+    </div>
+  </div>
+  @if (linked) {
+    <span class="card__go mono" aria-hidden="true">→</span>
+  }
+</ng-template>

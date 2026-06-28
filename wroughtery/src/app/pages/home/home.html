@@ -1,0 +1,79 @@
+<!-- HERO -------------------------------------------------------------------->
+<section class="hero">
+  <div class="hero__lockup">
+    <app-anvil-mark variant="hot" wordmark responsive [height]="78" [wordmarkSize]="84" />
+  </div>
+
+  <p class="hero__lede">
+    The umbrella for a suite of small, crafted software and AI tools — some
+    forged with AI, some not, across sizes and fields. Every one comes off the
+    same anvil and carries the same mark.
+  </p>
+
+  <h1 class="hero__tagline display">
+    Wrought, <span class="ember">not bought.</span>
+  </h1>
+
+  <div class="hero__cta">
+    <a class="btn btn--ember" routerLink="/tools">See the tools</a>
+    <a class="btn btn--ghost" routerLink="/orbital">Visit Orbital →</a>
+  </div>
+</section>
+
+<!-- 01 — THE SYSTEM --------------------------------------------------------->
+<section class="section">
+  <app-section-head
+    index="01"
+    label="The system"
+    heading="The hot iron is the signal"
+    intro="A reduced anvil, caught at the moment of forging. The ember billet is
+           the system rule — it tells you what you're holding before you read a
+           word: lit for the active, AI-driven work; cold for the everyday."
+  />
+
+  <div class="signal-grid">
+    <div class="signal-card">
+      <app-anvil-mark variant="hot" [height]="54" title="Hot billet" />
+      <div>
+        <div class="signal-card__name display">Hot billet</div>
+        <div class="signal-card__tag mono signal-card__tag--ember">
+          UMBRELLA · ACTIVE · AI
+        </div>
+      </div>
+    </div>
+
+    <div class="signal-card">
+      <app-anvil-mark variant="cold" [height]="50" title="Cold anvil" />
+      <div>
+        <div class="signal-card__name display">Cold anvil</div>
+        <div class="signal-card__tag mono">AN ORDINARY TOOL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — SHIPPED PRODUCTS (bridge pages) ----------------------------------->
+<section class="section">
+  <app-section-head
+    index="02"
+    label="On the bench"
+    heading="One mark, many tools"
+    intro="Each tool takes a name and the anvil as its signature, and keeps its
+           own fitted identity inside the frame. These are shipped, with their
+           own page under the umbrella."
+  />
+
+  <div class="bridges">
+    @for (tool of shipped; track tool.name) {
+      <a class="bridge" [routerLink]="tool.route">
+        <app-anvil-mark [variant]="tool.signal" [height]="44" [title]="tool.name" />
+        <div class="bridge__body">
+          <div class="bridge__name display">{{ tool.name }}</div>
+          <p class="bridge__blurb">{{ tool.blurb }}</p>
+          <span class="bridge__tag mono">A WROUGHTERY TOOL</span>
+        </div>
+        <span class="bridge__go mono" aria-hidden="true">→</span>
+      </a>
+    }
+  </div>
+</section>

@@ -1,0 +1,104 @@
+<div class="lagsync">
+  <!-- eyebrow: cold anvil — LagSync is a plain utility, no ember -->
+  <div class="lbx">
+    <app-anvil-mark variant="cold" [height]="22" title="LagSync — a Wroughtery tool" />
+    <span class="lbx__label mono">LagSync · Browser Extension</span>
+  </div>
+
+  <!-- HERO ----------------------------------------------------------------->
+  <section class="hero">
+    <div class="hero__copy">
+      <h1 class="hero__title display">
+        Bluetooth audio,<br />finally <span class="cyan">in sync</span>.
+      </h1>
+      <p class="hero__sub">
+        LagSync is a lightweight browser extension that fixes Bluetooth audio
+        delay during video — restoring lip-sync on YouTube, Twitch, Netflix and
+        more, across every major browser.
+      </p>
+
+      <div class="hero__actions">
+        <a class="cta" [href]="site" target="_blank" rel="noopener noreferrer"
+           aria-label="Get LagSync at lagsync.com">
+          Get LagSync
+        </a>
+        <p class="hero__meta mono">Free · 100% on-device · lagsync.com</p>
+      </div>
+
+      <!-- direct store links, per browser -->
+      <div class="stores">
+        <span class="stores__label mono">Install for</span>
+        <ul class="stores__row">
+          @for (s of stores; track s.name) {
+            <li>
+              <a class="chip mono" [href]="s.url" target="_blank" rel="noopener noreferrer"
+                >{{ s.name }}</a
+              >
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- app icon: LagSync's cyan mark on its own ink tile -->
+    <div class="hero__icon">
+      <span class="appicon">
+        <img src="assets/lagsync/lagsync-mark.svg" alt="" width="120" height="120" />
+      </span>
+      <span class="hero__icon-cap mono">App icon · v1.2.2</span>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS ---------------------------------------------------------->
+  <section class="shots">
+    <div class="shots__head mono">Screens</div>
+    <div class="shots__row">
+      @for (shot of shots; track shot.src) {
+        <figure class="shot">
+          <div class="shot__frame">
+            <img [src]="shot.src" [alt]="shot.alt" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="shot__cap mono">{{ shot.caption }}</figcaption>
+        </figure>
+      }
+    </div>
+  </section>
+
+  <!-- ACCENT BLOCK — the one contained cyan signature ---------------------->
+  <section class="accent">
+    <p class="accent__text display">
+      Bluetooth headphones run <span class="cyan">100–300 ms</span> behind the
+      picture. LagSync hands that delay back to the video — lip-sync,
+      <span class="cyan">restored</span>.
+    </p>
+  </section>
+
+  <!-- SPEC ROW (shared mono grammar) --------------------------------------->
+  <section class="spec">
+    <div class="spec__head mono">Specification</div>
+    <dl class="spec__list">
+      @for (s of specs; track s.key) {
+        <div class="spec__row">
+          <dt class="spec__k mono">{{ s.key }}</dt>
+          <dd class="spec__v mono">{{ s.value }}</dd>
+        </div>
+      }
+    </dl>
+    <p class="spec__note mono">
+      Reconciled to the family — mono in IBM&nbsp;Plex&nbsp;Mono, the cyan
+      signature contained, the primary CTA kept ember.
+    </p>
+  </section>
+
+  <!-- WAYFINDING ----------------------------------------------------------->
+  <div class="ways">
+    <a class="back" routerLink="/tools">
+      <span class="back__arrow mono" aria-hidden="true">←</span>
+      <span class="back__txt mono">Back to the workshop</span>
+    </a>
+    <a class="back back--out" [href]="site" target="_blank" rel="noopener noreferrer">
+      <span class="back__txt mono">Open lagsync.com</span>
+      <span class="back__arrow mono" aria-hidden="true">→</span>
+    </a>
+  </div>
+</div>

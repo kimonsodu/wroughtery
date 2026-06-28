@@ -1,0 +1,27 @@
+:host {
+  display: inline-flex;
+}
+
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+
+  &--stacked {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.mark {
+  width: auto;
+  display: block;
+  /* SVG never overflows; the hot overhang lives inside the viewBox already. */
+  overflow: visible;
+}
+
+.wordmark {
+  /* inherits the host's currentColor (iron on light, bone on dark) */
+  line-height: 1;
+  white-space: nowrap;
+}

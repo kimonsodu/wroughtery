@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Wroughtery favicon">
+  
+  <defs>
+    <filter id="fEmberGlow" x="-70%" y="-180%" width="240%" height="460%" color-interpolation-filters="linearRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.0" result="b3"></feGaussianBlur>
+      <feFlood flood-color="#B23311" flood-opacity="0.5" result="c3"></feFlood>
+      <feComposite in="c3" in2="b3" operator="in" result="g3"></feComposite>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.0" result="b2"></feGaussianBlur>
+      <feFlood flood-color="#E8581C" flood-opacity="0.85" result="c2"></feFlood>
+      <feComposite in="c2" in2="b2" operator="in" result="g2"></feComposite>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.45" result="b1"></feGaussianBlur>
+      <feFlood flood-color="#FFC06A" flood-opacity="0.95" result="c1"></feFlood>
+      <feComposite in="c1" in2="b1" operator="in" result="g1"></feComposite>
+      <feMerge>
+        <feMergeNode in="g3"></feMergeNode>
+        <feMergeNode in="g2"></feMergeNode>
+        <feMergeNode in="g1"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#211E1B"></rect>
+  <g transform="translate(8.5 21) scale(0.46) translate(-2 -10)">
+    <path d="M 3.5 18.2 Q 3 18.5 3.5 18.8 C 12 26 25 32 38 32 C 42 32 46 34 46 42 C 46 50 38 52 33.5 53 Q 33 53.5 33 54.5 L 33 57 Q 33 58 34 58 L 43 58 C 49 58 53 55 60 55 C 66 55 70 58 74 58 L 82 58 Q 83 58 83 57 L 83 54.5 Q 83 53.5 82.5 53 C 82 52 65 50 65 40 C 65 30 85 23 103.5 22 Q 104 22 104 21.5 L 104 16.5 Q 104 16 103.5 16 L 41.5 16 Q 41 16 41 16.5 L 41 18 Q 41 18.5 40.5 18.5 L 3.5 18.2 Z" fill="#EFEAE0"></path>
+    <path d="M52.2 11 L80.8 11 Q83 11 83 13.2 L83 13.8 Q83 16 80.8 16 L52.2 16 Q50 16 50 13.8 L50 13.2 Q50 11 52.2 11 Z" fill="#C24E2A" filter="url(#fEmberGlow)"></path>
+  </g>
+</svg>
