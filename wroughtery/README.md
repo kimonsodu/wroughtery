@@ -1,66 +1,90 @@
-# Wroughtery — studio site + Orbital product page
+# Wroughtery
 
-The Wroughtery studio identity (the forge "umbrella") and the **Orbital** product
-page (a bridge page that lives inside the forge shell but wears Orbital's own
-phosphor teal in its content area). Built per the handoff in `../README.md`.
+Studio site for **Wroughtery** — a tools forge. _"Wrought, not bought."_
+
+The site is the **forge "umbrella"**: a dark, precise, spec-sheet identity (Iron +
+Ember, Bricolage Grotesque + IBM Plex, the anvil mark) that houses several tools.
+Each shipped tool gets a **bridge page** — it lives inside the forge shell but may
+wear its own accent color in its content area.
 
 ## Stack
-- **Angular 22**, standalone components, signals, functional router.
-- **SSR + static prerender** (`@angular/ssr`). All three routes are prerendered
-  to static HTML — the build output in `dist/wroughtery/browser/` is a static
-  site, ready for Netlify / Cloudflare Pages / Firebase Hosting (per the spec).
+
+- **Angular 22** — standalone components, signals, functional router, `OnPush`.
+- **SSR + static prerender** (`@angular/ssr`). Every route is prerendered to static
+  HTML; `dist/wroughtery/browser/` is a ready-to-deploy static site. An optional
+  Express SSR server (`src/server.ts`) serves the dynamic path.
 - **SCSS** with design tokens as CSS custom properties (`src/styles.scss`).
-- **Self-hosted fonts** via `@fontsource` (no Google Fonts hotlink): IBM Plex
-  Sans, IBM Plex Mono, and the Bricolage Grotesque variable font. Registered in
-  `angular.json` → `styles`.
+- **Self-hosted fonts** via `@fontsource` (no Google Fonts hotlink): IBM Plex Sans,
+  IBM Plex Mono, Bricolage Grotesque variable. Registered in `angular.json` → `styles`.
 
 ## Run
+
 ```bash
 npm install
-npm start                 # dev server → http://localhost:4200
-npm run build             # production build + prerender → dist/wroughtery
-node dist/wroughtery/server/server.mjs   # optional SSR/node server (PORT=4000)
+npm start            # dev server → http://localhost:4200
+npm run build        # production build + prerender → dist/wroughtery
+npm test             # unit tests (vitest)
+
+# optional: serve the SSR/node build
+node dist/wroughtery/server/server.mjs   # PORT defaults to 4000
 ```
-The static deploy target is `dist/wroughtery/browser/`. The optional node SSR
-server enforces `security.allowedHosts` (set in `angular.json`) — add your
-production hostname there before serving the dynamic path from a new domain.
+
+Static deploy target: `dist/wroughtery/browser/`. The SSR server enforces
+`security.allowedHosts` in `angular.json` (`localhost`, `127.0.0.1`, `wroughtery.com`)
+— add new production hostnames there before serving.
 
 ## Routes
-- `/` — studio home (forge identity, hero, the signal system, the shipped-tool bridge cards)
-- `/tools` — portfolio grid; hot/cold anvils rendered straight from tool data
-- `/orbital` — Orbital bridge page (forge shell + contained **teal** content area)
-- `/lagsync` — LagSync bridge page (forge shell + contained **cyan** content area).
-  LagSync is a live, shipped browser extension (lagsync.com); this page links out
-  to the site and the five real store listings. Assets in `public/assets/lagsync/`
-  are copied from the LagSync site; its Space Mono is reconciled to IBM Plex Mono.
 
-## The endorsed model, in code
-Three layers, enforced structurally — not by per-product re-theming:
+| Path | Page |
+|---|---|
+| `/` | Studio home — forge identity, hero, signal system, shipped-tool bridge cards |
+| `/tools` | Portfolio grid — hot/cold anvils rendered straight from tool data |
+| `/orbital` | **Orbital** bridge page — forge shell + contained **teal** content. A true level, read off phone motion sensors |
+| `/lagsync` | **LagSync** bridge page — forge shell + contained **cyan** content. Live browser extension (lagsync.com); links to the site + store listings |
+
+Unknown paths redirect to `/`.
+
+## The endorsed model (read before re-theming)
+
+Don't repaint the umbrella, and don't force every tool into one skin. Three layers,
+enforced structurally — not by per-product re-theming:
 
 | Layer | Where | Rule |
 |---|---|---|
 | Forge shell | `app.ts`, `shared/header`, `shared/footer` | Pure forge, shared by every route. Never re-themed per product. |
-| Orbital content | `pages/orbital` | Teal is **scoped** under `.orbital` (see `orbital.scss`); the shell stays forge. The single CTA stays **ember**. |
-| Signal system | `core/tools.ts` + `shared/anvil-mark` | `signal: 'hot' \| 'cold'` is data. `AnvilMark` renders the ember billet for `hot` (AI/active) and a bare anvil for `cold` (ordinary/sensor). Orbital is sensor-driven → **cold** on the grid. |
+| Tool content | `pages/<tool>` | A tool's accent is **scoped** under its own class (e.g. teal under `.orbital`). The shell stays forge; the single CTA stays **ember**. |
+| Signal system | `core/tools.ts` + `shared/anvil-mark` | `signal: 'hot' \| 'cold'` is **data**, not decoration. `AnvilMark` renders the ember billet for `hot` (AI / active) and a bare anvil for `cold` (ordinary / sensor-driven). |
 
-The ember glow filter + fade gradient are defined **once** globally
-(`shared/ember-defs`, rendered in the app shell); every hot mark references
-`url(#emberGlow)` / `url(#emberFade)` so many marks share one filter with no id
-collisions. The anvil path geometry + glow are copied verbatim from the canonical
-`../assets/wroughtery-*.svg`.
+The ember glow filter + fade gradient are defined **once** globally (`shared/ember-defs`,
+rendered in the app shell); every hot mark references `url(#emberGlow)` / `url(#emberFade)`,
+so many marks share one filter with no id collisions.
 
 ## Tokens
-Forge palette (final, match exactly) lives in `src/styles.scss`:
-`--iron #211E1B · --steel #45525A · --ember #C24E2A · --ash #8C857B · --bone
-#EFEAE0 · --paper #E9E8E3`, plus the two hairline rules and the type stacks.
 
-### Orbital tokens — PROVISIONAL ⚠️
-The Orbital app repo was **not present** in this workspace, so the spec's
-"fill from the Orbital app project" values could not be sourced. The ink / teal
-values in `pages/orbital/orbital.scss` are **chosen to fit the described
-instrument** and are flagged `TODO` inline. Reconcile against the real app:
-- `--ink #0E1417`, `--ink-raised #141C20` (Orbital's near-black base)
-- `--teal #34E3C4` (phosphor signature, on dark) / `--teal-deep #0FA890` (on paper)
-- level point `--amber #C24E2A` (**== Ember**, deliberately reconciled to the family)
+Forge palette (final — match exactly), in `src/styles.scss`:
 
-Type was reconciled per spec: readouts → IBM Plex Mono, body → IBM Plex Sans.
+| Token | Value | Use |
+|---|---|---|
+| `--iron` | `#211E1B` | default ink, dark surfaces |
+| `--steel` | `#45525A` | secondary text, muted UI |
+| `--ember` | `#C24E2A` | the hot iron — billet, the one CTA, AI marks |
+| `--ash` | `#8C857B` | mono labels, meta, hex, captions |
+| `--bone` | `#EFEAE0` | light ink on dark surfaces |
+| `--paper` | `#E9E8E3` | page background — cool off-white, never cream |
+
+A tool's interior accent (e.g. Orbital's teal) is scoped in that page's SCSS, kept off the
+shell, and reconciled to the family — Orbital's level point `--amber` deliberately equals `--ember`.
+
+## Layout
+
+```
+src/
+  app/
+    app.ts, app.routes.ts        # shell + functional router
+    core/tools.ts                # tool roster + hot/cold signal data
+    pages/                       # home, tools, orbital, lagsync
+    shared/                      # header, footer, anvil-mark, ember-defs, section-head
+  styles.scss                    # design tokens + base
+  server.ts                      # optional Express SSR entry
+public/                          # favicon + static assets (copied verbatim into the build)
+```
