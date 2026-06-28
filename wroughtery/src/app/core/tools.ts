@@ -24,7 +24,7 @@ export const TOOLS: readonly Tool[] = [
   {
     name: 'Orbital',
     signal: 'cold',
-    blurb: 'A true level, read straight off your phone’s motion sensors.',
+    blurb: 'Drifts faint edge-of-screen dots that ease car sickness while you work.',
     route: '/orbital',
   },
   {

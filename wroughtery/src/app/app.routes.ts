@@ -13,7 +13,7 @@ export const routes: Routes = [
   },
   {
     path: 'orbital',
-    title: 'Orbital — a true level, from Wroughtery',
+    title: 'Orbital — motion-cue overlay, from Wroughtery',
     loadComponent: () =>
       import('./pages/orbital/orbital').then((m) => m.Orbital),
   },
