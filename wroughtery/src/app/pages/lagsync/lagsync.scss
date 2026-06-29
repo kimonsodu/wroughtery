@@ -1,14 +1,23 @@
 /* =============================================================================
    LagSync bridge page — cyan is CONTAINED to .lagsync. Forge shell untouched.
-   Accent #00b8db is LagSync's real signature from lagsync.com; ink #080808 is
-   its real dark theme. The primary CTA stays ember (umbrella convention).
+   TOKENS taken verbatim from the app (extension tailwind.config.js): bg #080808,
+   surface #111111, accent cyan #22d3ee (dim #06b6d4), text #e2e8f0, muted
+   #94a3b8. Body text on the paper shell uses a paper-safe deep cyan (the app is
+   dark-only, so it has no light-bg variant). Primary CTA stays ember (convention).
    ========================================================================== */
 .lagsync {
-  --ink:        #080808; /* LagSync's real near-black theme            */
-  --ink-raised: #121214; /* raised panel                              */
-  --cyan:       #00b8db; /* LagSync signature, on dark                */
-  --cyan-deep:  #0A6276; /* cyan that holds AA contrast on paper (~5:1) */
-  --ink-line:   rgba(0, 184, 219, .18); /* cyan-tinted instrument hairline */
+  /* --- exact app palette (extension tailwind.config.js) --- */
+  --ink:        #080808; /* app bg          */
+  --ink-raised: #111111; /* app surface     */
+  --ink-hi:     #161616; /* app surface-hi  */
+  --cyan:       #22d3ee; /* app cyan accent */
+  --cyan-dim:   #06b6d4; /* app cyan-dim    */
+  --ink-text:   #e2e8f0; /* app text        */
+  --ink-muted:  #94a3b8; /* app muted       */
+  --ink-line:   rgba(148, 163, 184, .16); /* slate hairline (matches app text palette) */
+
+  /* paper-safe deep cyan for body text on the light shell (derived; app is dark-only) */
+  --cyan-deep:  #0E7490;
 
   display: block;
   padding-top: 36px;
@@ -197,7 +206,7 @@
 .accent {
   border-radius: var(--radius-card);
   background:
-    radial-gradient(80% 140% at 88% 50%, rgba(0, 184, 219, .12), transparent 60%),
+    radial-gradient(80% 140% at 88% 50%, rgba(34, 211, 238, .12), transparent 60%),
     var(--ink);
   border: 1px solid var(--ink-line);
   margin-top: var(--section-gap);
@@ -206,7 +215,7 @@
 .accent__text {
   font-size: 28px;
   line-height: 1.22;
-  color: var(--bone);
+  color: var(--ink-text);
   margin: 0;
   max-width: 38ch;
 }

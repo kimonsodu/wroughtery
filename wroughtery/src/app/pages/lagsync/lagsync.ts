@@ -18,7 +18,7 @@ interface Shot {
 
 /**
  * The LagSync bridge page — same record-label model as Orbital: the forge shell
- * is untouched and LagSync's own cyan signature (#00b8db, from lagsync.com) is
+ * is untouched and LagSync's own cyan signature (#22d3ee, the app's accent) is
  * CONTAINED to the content area. The single primary CTA stays ember (umbrella
  * convention); the per-browser store links sit below it as mono chips.
  *

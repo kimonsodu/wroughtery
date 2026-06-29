@@ -3,18 +3,29 @@
    (header/footer/hairlines) is untouched; only this content area carries the
    instrument's phosphor teal + the amber signal point.
 
-   TOKENS: reconciled against the SHIPPED Orbital icon kit
-   (../orbital/assets/orbital-icon) — ink #10151E, phosphor teal #6FD8C6 (the
-   dots), signal amber #E0A24A (the one steady centre point). The bright tokens
-   live only on dark instrument surfaces; body text uses paper-safe variants.
+   TOKENS: taken verbatim from the app (Theme.xaml / Android colors.xml) so the
+   instrument surfaces match the real product 1:1 — bg #10151E, card #161D29,
+   stroke #27313F, accent teal #6FD8C6, amber #E0A24A, text #E6EAF0. The bright
+   tokens live only on dark instrument surfaces; body text on the paper shell
+   uses a paper-safe teal (the app is dark-only, so it has no light-bg variant).
    ========================================================================== */
 .orbital {
-  --ink:        #10151E; /* Orbital base (shipped tile colour)         */
-  --ink-raised: #161D29; /* raised instrument surface (card bg)        */
-  --teal:       #6FD8C6; /* phosphor signature, on dark                */
-  --teal-deep:  #2E8675; /* teal that holds AA contrast on paper       */
-  --amber-signal: #E0A24A; /* the steady level point, on dark          */
-  --ink-line:   rgba(141, 224, 196, .14); /* teal-tinted instrument hairline */
+  /* --- exact app palette (dark instrument surfaces) --- */
+  --ink:        #10151E; /* app bg          */
+  --ink-deep:   #0B0F16; /* app bg_deep     */
+  --ink-raised: #161D29; /* app card        */
+  --ink-hi:     #1C2533; /* app card_hi     */
+  --stroke:     #27313F; /* app stroke      */
+  --teal:       #6FD8C6; /* app accent      */
+  --teal-dim:   #4FB8A8; /* app accent_dim  */
+  --amber-signal: #E0A24A; /* app amber     */
+  --ink-text:   #E6EAF0; /* app text        */
+  --ink-muted:  #8A94A6; /* app muted       */
+  --ink-faint:  #6A7486; /* app faint       */
+  --ink-line:   #27313F; /* hairline = app stroke */
+
+  /* paper-safe teal for body text on the light shell (derived; app is dark-only) */
+  --teal-deep:  #2E8675;
 
   display: block;
   padding-top: 36px;
@@ -186,7 +197,7 @@
   justify-content: space-between;
   font-size: 9.5px;
   letter-spacing: .16em;
-  color: var(--ash);
+  color: var(--ink-muted);
 }
 .frame__bar .teal  { color: var(--teal); }
 .frame__bar .amber { color: var(--amber-signal); }
@@ -203,7 +214,7 @@
   font-size: 9.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--ash);
+  color: var(--ink-muted);
 }
 
 /* phone mock */
@@ -244,7 +255,7 @@
   justify-content: space-between;
   font-size: 9.5px;
   letter-spacing: .16em;
-  color: var(--ash);
+  color: var(--ink-muted);
 }
 .screen__top .teal  { color: var(--teal); }
 .screen__top .amber { color: var(--amber-signal); }
@@ -253,7 +264,7 @@
   font-size: 9.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--ash);
+  color: var(--ink-muted);
 }
 
 /* --- accent block (contained teal signature, on ink) ---------------------- */
@@ -273,7 +284,7 @@
 .accent__text {
   font-size: 28px;
   line-height: 1.18;
-  color: var(--bone);
+  color: var(--ink-text);
   margin: 0;
   max-width: 32ch;
 }
