@@ -107,6 +107,23 @@
 .cta__txt { display: flex; flex-direction: column; line-height: 1.05; }
 .cta__txt small { font-size: 9.5px; letter-spacing: .14em; opacity: .85; }
 .cta__txt .display { font-size: 19px; }
+/* little price chip on each store button */
+.cta__tag {
+  align-self: center;
+  margin-left: 4px;
+  padding: 3px 8px;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: rgba(239, 234, 224, .18);
+  color: var(--bone);
+}
+.cta__tag--alt {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--steel);
+}
 
 /* app icon — the shipped SVG mark on its own ink tile */
 .hero__icon {

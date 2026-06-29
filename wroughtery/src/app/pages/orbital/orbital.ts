@@ -45,7 +45,8 @@ export class Orbital {
     { key: 'Sensors', value: 'Accelerometer · Gyroscope' },
     { key: 'Phone link', value: 'Bluetooth · Wi-Fi · USB' },
     { key: 'Privacy', value: 'Local-only · no internet' },
-    { key: 'Price', value: 'Free' },
+    { key: 'Windows', value: 'Free — laptop sensor' },
+    { key: 'Android app', value: 'Subscription · free trial' },
     { key: 'Version', value: '1.0.0' },
   ];
 }

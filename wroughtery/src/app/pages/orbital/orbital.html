@@ -40,18 +40,8 @@
       </p>
 
       <div class="hero__actions">
-        <a class="cta" [href]="play" target="_blank" rel="noopener noreferrer"
-           aria-label="Get Orbital on Google Play">
-          <svg class="cta__glyph" viewBox="0 0 24 26" aria-hidden="true">
-            <path d="M2 1 L22 13 L2 25 Z" fill="currentColor" />
-          </svg>
-          <span class="cta__txt">
-            <small class="mono">GET IT ON</small>
-            <span class="display">Google Play</span>
-          </span>
-        </a>
-        <a class="cta cta--alt" [href]="win" rel="noopener"
-           aria-label="Download Orbital for Windows">
+        <a class="cta" [href]="win" rel="noopener"
+           aria-label="Download Orbital free for Windows">
           <svg class="cta__glyph" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M3 5 L11 4 L11 11 L3 11 Z M12 3.9 L21 3 L21 11 L12 11 Z
                      M3 12 L11 12 L11 19 L3 18 Z M12 12 L21 12 L21 21 L12 20 Z"
@@ -61,9 +51,24 @@
             <small class="mono">DOWNLOAD FOR</small>
             <span class="display">Windows</span>
           </span>
+          <span class="cta__tag mono">Free</span>
+        </a>
+        <a class="cta cta--alt" [href]="play" target="_blank" rel="noopener noreferrer"
+           aria-label="Get Orbital on Google Play">
+          <svg class="cta__glyph" viewBox="0 0 24 26" aria-hidden="true">
+            <path d="M2 1 L22 13 L2 25 Z" fill="currentColor" />
+          </svg>
+          <span class="cta__txt">
+            <small class="mono">GET IT ON</small>
+            <span class="display">Google Play</span>
+          </span>
+          <span class="cta__tag cta__tag--alt mono">Free trial</span>
         </a>
       </div>
-      <p class="hero__meta mono">Free · Local-only, no internet · Click-through</p>
+      <p class="hero__meta mono">
+        Free on Windows with your laptop’s sensor · the phone app is a
+        subscription with a free trial · all local, no internet.
+      </p>
     </div>
 
     <!-- app icon: the SHIPPED Orbital mark — teal edge dots, one amber point -->
