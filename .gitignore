@@ -1,0 +1,8 @@
+# Vercel CLI link + pulled env (NEVER commit — contains tokens)
+.vercel/
+**/.vercel/
+
+# Node / build artifacts (belt-and-suspenders; inner app has its own ignore)
+node_modules/
+dist/
+.angular/
